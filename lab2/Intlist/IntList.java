@@ -4,8 +4,8 @@ import java.util.Formatter;
  * A naked recursive list of integers, similar to what we saw in lecture 3, but
  * with a large number of additional methods.
  *
- * @author P. N. Hilfinger, with some modifications by Josh Hug and melaniecebula
- *         [Do not modify this file.]
+ * @author P. N. Hilfinger, with some modifications by Josh Hug and
+ *         melaniecebula [Do not modify this file.]
  */
 public class IntList {
     /**
@@ -29,7 +29,7 @@ public class IntList {
      * A List with null rest, and first = 0.
      */
     public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+        /* NOTE: public IntList () { } would also work. */
         this(0, null);
     }
 
@@ -74,46 +74,62 @@ public class IntList {
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
-
     /**
-     * Returns a list consisting of the elements of A followed by the
-     * *  elements of B.  May modify items of A. Don't use 'new'.
+     * Returns a list consisting of the elements of A followed by the * elements of
+     * B. May modify items of A. Don't use 'new'.
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if (A == null)
+            return B;
+        IntList ptr_A = A;
+        while (ptr_A.rest != null) {
+            ptr_A = ptr_A.rest;
+        }
+        ptr_A.rest = B;
+
+        return A;
     }
 
     /**
-     * Returns a list consisting of the elements of A followed by the
-     * * elements of B.  May NOT modify items of A.  Use 'new'.
+     * Returns a list consisting of the elements of A followed by the * elements of
+     * B. May NOT modify items of A. Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if (A == null) {
+            if (B == null) {
+                return null;
+            }
+            IntList res = new IntList(B.first, null);
+            IntList ptr_B = res;
+            B = B.rest;
+            while (B != null) {
+                ptr_B.rest = new IntList(B.first, null);
+                ptr_B = ptr_B.rest;
+                B = B.rest;
+            }
+        }
+        IntList res = new IntList(A.first, null);
+        IntList ptr_A = res;
+        A = A.rest;
+
+        while (A != null) {
+            ptr_A.rest = new IntList(A.first, null);
+            ptr_A = ptr_A.rest;
+            A = A.rest;
+        }
+        while (B != null) {
+            ptr_A.rest = new IntList(B.first, null);
+            ptr_A = ptr_A.rest;
+            B = B.rest;
+        }
+        return res;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
-     * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
-     * will be introduced later in the course or feature some form of advanced
-     * trickery which we implemented to help make your life a little easier for
-     * the lab.
+     * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here will
+     * be introduced later in the course or feature some form of advanced trickery
+     * which we implemented to help make your life a little easier for the lab.
      */
 
     @Override
@@ -122,8 +138,8 @@ public class IntList {
     }
 
     /**
-     * Returns a new IntList containing the ints in ARGS. You are not
-     * expected to read or understand this method.
+     * Returns a new IntList containing the ints in ARGS. You are not expected to
+     * read or understand this method.
      */
     public static IntList of(Integer... args) {
         IntList result, p;
@@ -142,9 +158,9 @@ public class IntList {
     }
 
     /**
-     * Returns true iff X is an IntList containing the same sequence of ints
-     * as THIS. Cannot handle IntLists with cycles. You are not expected to
-     * read or understand this method.
+     * Returns true iff X is an IntList containing the same sequence of ints as
+     * THIS. Cannot handle IntLists with cycles. You are not expected to read or
+     * understand this method.
      */
     public boolean equals(Object x) {
         if (!(x instanceof IntList)) {
@@ -165,15 +181,14 @@ public class IntList {
     }
 
     /**
-     * If a cycle exists in the IntList, this method
-     * returns an integer equal to the item number of the location where the
-     * cycle is detected.
+     * If a cycle exists in the IntList, this method returns an integer equal to the
+     * item number of the location where the cycle is detected.
      * <p>
-     * If there is no cycle, the number 0 is returned instead. This is a
-     * utility method for lab2. You are not expected to read, understand, or
-     * even use this method. The point of this method is so that if you convert
-     * an IntList into a String and that IntList has a loop, your computer
-     * doesn't get stuck in an infinite loop.
+     * If there is no cycle, the number 0 is returned instead. This is a utility
+     * method for lab2. You are not expected to read, understand, or even use this
+     * method. The point of this method is so that if you convert an IntList into a
+     * String and that IntList has a loop, your computer doesn't get stuck in an
+     * infinite loop.
      */
 
     private int detectCycles(IntList A) {
@@ -185,7 +200,6 @@ public class IntList {
         }
 
         int cnt = 0;
-
 
         while (true) {
             cnt++;
@@ -208,8 +222,10 @@ public class IntList {
     }
 
     @Override
-    /** Outputs the IntList as a String. You are not expected to read
-     * or understand this method. */
+    /**
+     * Outputs the IntList as a String. You are not expected to read or understand
+     * this method.
+     */
     public String toString() {
         Formatter out = new Formatter();
         String sep;
@@ -231,4 +247,3 @@ public class IntList {
         return out.toString();
     }
 }
-
