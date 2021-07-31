@@ -108,6 +108,7 @@ public class IntList {
                 ptr_B = ptr_B.rest;
                 B = B.rest;
             }
+            return res;
         }
         IntList res = new IntList(A.first, null);
         IntList ptr_A = res;
