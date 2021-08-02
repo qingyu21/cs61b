@@ -57,8 +57,7 @@ public class NBody {
             // draw
             StdDraw.picture(0, 0, "./images/starfield.jpg", radius * 2, radius * 2);
             for (Planet planet : planets) {
-                String filepath = "./images/" + planet.imgFileName;
-                StdDraw.picture(planet.xxPos, planet.yyPos, filepath);
+                planet.draw();
             }
             StdDraw.show();
             StdDraw.pause(10);
