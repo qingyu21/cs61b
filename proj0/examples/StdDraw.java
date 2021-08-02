@@ -1,3 +1,4 @@
+package example;
 /******************************************************************************
  *  Compilation:  javac StdDraw.java
  *  Execution:    java StdDraw
