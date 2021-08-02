@@ -1,4 +1,7 @@
 package examples;
+
+import example.StdDraw;
+
 /*
  *
  * Make sure to see the more detailed description of
