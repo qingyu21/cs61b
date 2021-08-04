@@ -51,8 +51,8 @@ public class ArrayDeque<T> {
             resize(capacity * 2);
         }
         first = first - 1;
-        if(first<0){
-            first+=capacity;
+        if (first < 0) {
+            first += capacity;
         }
         items[first] = item;
         size++;
