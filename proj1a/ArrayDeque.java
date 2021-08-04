@@ -131,10 +131,10 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        T itemValue = items[first + size];
-        items[first + size] = null;
+        T itemValue = items[(first + size) % capacity];
+        items[(first + size) % capacity] = null;
         size--;
-        if (size > lowerBound && (double) size / capacity < minimumPercentage) {
+        if (size >= lowerBound && (double) size / capacity < minimumPercentage) {
             resize(capacity / 2);
         }
         return itemValue;
