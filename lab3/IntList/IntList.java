@@ -128,6 +128,26 @@ public class IntList {
     }
 
     /**
+     * Returns the reverse of the given IntList. This method is destructive. If
+     * given null as an input, returns null.
+     */
+    pub
+    if(A==null||A.rest==null)
+
+    {
+        return A;
+    }
+
+    IntList prev = null;
+    IntList curr = A;while(curr!=null)
+    {
+        IntList next = A.rest;
+        curr.rest = prev;
+        prev = curr;
+        curr = next;
+    }return prev;  }
+
+    /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here will
      * be introduced later in the course or feature some form of advanced trickery
      * which we implemented to help make your life a little easier for the lab.
