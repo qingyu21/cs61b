@@ -36,27 +36,27 @@ public class IntList {
     /**
      * Returns a list equal to L with all elements squared. Destructive.
      */
-    public static void dSquareList(IntList L) {
+    public static void dSquareList(IntList list) {
 
-        while (L != null) {
-            L.first = L.first * L.first;
-            L = L.rest;
+        while (list != null) {
+            list.first = list.first * list.first;
+            list = list.rest;
         }
     }
 
     /**
-     * Returns a list equal to L with all elements squared. Non-destructive.
+     * Returns a list equal to list with all elements squared. Non-destructive.
      */
-    public static IntList squareListIterative(IntList L) {
-        if (L == null) {
+    public static IntList squareListIterative(IntList list) {
+        if (list == null) {
             return null;
         }
-        IntList res = new IntList(L.first * L.first, null);
+        IntList res = new IntList(list.first * list.first, null);
         IntList ptr = res;
-        L = L.rest;
-        while (L != null) {
-            ptr.rest = new IntList(L.first * L.first, null);
-            L = L.rest;
+        list = list.rest;
+        while (list != null) {
+            ptr.rest = new IntList(list.first * list.first, null);
+            list = list.rest;
             ptr = ptr.rest;
         }
         return res;
@@ -65,11 +65,11 @@ public class IntList {
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
      */
-    public static IntList squareListRecursive(IntList L) {
-        if (L == null) {
+    public static IntList squareListRecursive(IntList list) {
+        if (list == null) {
             return null;
         }
-        return new IntList(L.first * L.first, squareListRecursive(L.rest));
+        return new IntList(list.first * list.first, squareListRecursive(list.rest));
     }
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
@@ -79,50 +79,51 @@ public class IntList {
      * B. May modify items of A. Don't use 'new'.
      */
 
-    public static IntList dcatenate(IntList A, IntList B) {
-        if (A == null)
-            return B;
-        IntList ptr_A = A;
-        while (ptr_A.rest != null) {
-            ptr_A = ptr_A.rest;
+    public static IntList dcatenate(IntList a, IntList b) {
+        if (a == null) {
+            return b;
         }
-        ptr_A.rest = B;
+        IntList ptrA = a;
+        while (ptrA.rest != null) {
+            ptrA = ptrA.rest;
+        }
+        ptrA.rest = b;
 
-        return A;
+        return a;
     }
 
     /**
      * Returns a list consisting of the elements of A followed by the * elements of
      * B. May NOT modify items of A. Use 'new'.
      */
-    public static IntList catenate(IntList A, IntList B) {
-        if (A == null) {
-            if (B == null) {
+    public static IntList catenate(IntList a, IntList b) {
+        if (a == null) {
+            if (b == null) {
                 return null;
             }
-            IntList res = new IntList(B.first, null);
-            IntList ptr_B = res;
-            B = B.rest;
-            while (B != null) {
-                ptr_B.rest = new IntList(B.first, null);
-                ptr_B = ptr_B.rest;
-                B = B.rest;
+            IntList res = new IntList(b.first, null);
+            IntList ptrB = res;
+            b = b.rest;
+            while (b != null) {
+                ptrB.rest = new IntList(b.first, null);
+                ptrB = ptrB.rest;
+                b = b.rest;
             }
             return res;
         }
-        IntList res = new IntList(A.first, null);
-        IntList ptr_A = res;
-        A = A.rest;
+        IntList res = new IntList(a.first, null);
+        IntList ptrA = res;
+        a = a.rest;
 
-        while (A != null) {
-            ptr_A.rest = new IntList(A.first, null);
-            ptr_A = ptr_A.rest;
-            A = A.rest;
+        while (a != null) {
+            ptrA.rest = new IntList(a.first, null);
+            ptrA = ptrA.rest;
+            a = a.rest;
         }
-        while (B != null) {
-            ptr_A.rest = new IntList(B.first, null);
-            ptr_A = ptr_A.rest;
-            B = B.rest;
+        while (b != null) {
+            ptrA.rest = new IntList(b.first, null);
+            ptrA = ptrA.rest;
+            b = b.rest;
         }
         return res;
     }
@@ -131,9 +132,9 @@ public class IntList {
      * Returns the reverse of the given IntList. This method is destructive. If
      * given null as an input, returns null.
      */
-    public static IntList reverse(IntList A) {
+    public static IntList reverse(IntList list) {
         IntList prev = null;
-        IntList curr = A;
+        IntList curr = list;
         while (curr!= null) {
             IntList next= curr.rest;
             curr.rest = prev;
@@ -179,19 +180,20 @@ public class IntList {
      * THIS. Cannot handle IntLists with cycles. You are not expected to read or
      * understand this method.
      */
+    @Override
     public boolean equals(Object x) {
         if (!(x instanceof IntList)) {
             return false;
         }
-        IntList L = (IntList) x;
+        IntList l = (IntList) x;
         IntList p;
 
-        for (p = this; p != null && L != null; p = p.rest, L = L.rest) {
-            if (p.first != L.first) {
+        for (p = this; p != null && l != null; p = p.rest, l = l.rest) {
+            if (p.first != l.first) {
                 return false;
             }
         }
-        if (p != null || L != null) {
+        if (p != null || l != null) {
             return false;
         }
         return true;
@@ -208,11 +210,11 @@ public class IntList {
      * infinite loop.
      */
 
-    private int detectCycles(IntList A) {
-        IntList tortoise = A;
-        IntList hare = A;
+    private int detectCycles(IntList list) {
+        IntList tortoise = list;
+        IntList hare = list;
 
-        if (A == null) {
+        if (list == null) {
             return 0;
         }
 

@@ -22,9 +22,9 @@ public class IntListTest {
 
     @Test
     public void testdSquareList() {
-        IntList L = IntList.of(1, 2, 3);
-        IntList.dSquareList(L);
-        assertEquals(IntList.of(1, 4, 9), L);
+        IntList list = IntList.of(1, 2, 3);
+        IntList.dSquareList(list);
+        assertEquals(IntList.of(1, 4, 9), list);
     }
 
     /**
@@ -41,42 +41,37 @@ public class IntListTest {
 
     @Test
     public void testSquareListRecursive() {
-        IntList L = IntList.of(1, 2, 3);
-        IntList res = IntList.squareListRecursive(L);
-        assertEquals(IntList.of(1, 2, 3), L);
+        IntList list = IntList.of(1, 2, 3);
+        IntList res = IntList.squareListRecursive(list);
+        assertEquals(IntList.of(1, 2, 3), list);
         assertEquals(IntList.of(1, 4, 9), res);
     }
 
     @Test
     public void testDcatenate() {
-        IntList A = IntList.of(1, 2, 3);
-        IntList B = IntList.of(4, 5, 6);
+        IntList list = IntList.of(1, 2, 3);
+        IntList b = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
-        assertEquals(exp, IntList.dcatenate(A, B));
-        assertEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
+        assertEquals(exp, IntList.dcatenate(list, b));
+        assertEquals(IntList.of(1, 2, 3, 4, 5, 6), list);
     }
 
     @Test
     public void testCatenate() {
-        IntList A = IntList.of(1, 2, 3);
-        IntList B = IntList.of(4, 5, 6);
+        IntList a = IntList.of(1, 2, 3);
+        IntList b = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
-        assertEquals(exp, IntList.catenate(A, B));
-        assertEquals(IntList.of(1, 2, 3), A);
+        assertEquals(exp, IntList.catenate(a, b));
+        assertEquals(IntList.of(1, 2, 3), a);
     }
 
     @Test
     public void testReverse() {
-        IntList A = IntList.of(1, 2, 3, 4, 5, 6);
-        A = IntList.reverse(A);
-        assertEquals(IntList.of(6, 5, 4, 3, 2, 1), A);
-        assertNotEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
-        assertEquals(null, IntList.reverse(null));
+        IntList list = IntList.of(1, 2, 3, 4, 5, 6);
+        list = IntList.reverse(list);
+        assertEquals(IntList.of(6, 5, 4, 3, 2, 1), list);
+        assertNotEquals(IntList.of(1, 2, 3, 4, 5, 6), list);
+        assertNull(IntList.reverse(null));
     }
-
-    /**
-     * If you're running this from the command line, you'll need to add a main
-     * method. See ArithmeticTest.java for an example.
-     */
 
 }
