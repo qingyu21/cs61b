@@ -50,7 +50,10 @@ public class ArrayDeque<T> {
         if (size == capacity) {
             resize(capacity * 2);
         }
-        first = (first - 1) % capacity;
+        first = first - 1;
+        if(first<0){
+            first+=capacity;
+        }
         items[first] = item;
         size++;
     }
