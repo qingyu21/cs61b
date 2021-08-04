@@ -132,14 +132,10 @@ public class IntList {
      * given null as an input, returns null.
      */
     public static IntList reverse(IntList A) {
-        if (A == null || A.rest == null) {
-            return A;
-        }
-
         IntList prev = null;
         IntList curr = A;
-        while (curr != null) {
-            IntList next = A.rest;
+        while (curr!= null) {
+            IntList next= curr.rest;
             curr.rest = prev;
             prev = curr;
             curr = next;
