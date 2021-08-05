@@ -34,7 +34,6 @@ public class TestPalindrome {
 
     @Test
     public void testIsPalindromeCC() {
-        //TODO: modify the following asserts
         CharacterComparator cc = new OffByOne();
         assertTrue(palindrome.isPalindrome(null, cc));
         assertTrue(palindrome.isPalindrome("", cc));
