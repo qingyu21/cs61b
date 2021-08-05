@@ -22,4 +22,24 @@ public class Palindrome {
         }
         return true;
     }
+
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        if (cc == null) {
+            return false;
+        }
+
+        if (word == null || word.length() == 0 || word.length() == 1) {
+            return true;
+        }
+
+        Deque<Character> deque = wordToDeque(word);
+        while (deque.size() > 1) {
+            Character front = deque.removeFirst();
+            Character last = deque.removeLast();
+            if (!cc.equalChars(front, last)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

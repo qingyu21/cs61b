@@ -40,13 +40,11 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("", cc));
         assertTrue(palindrome.isPalindrome("a", cc));
         assertTrue(palindrome.isPalindrome("b", cc));
-        assertTrue(palindrome.isPalindrome("racecar", cc));
-        assertTrue(palindrome.isPalindrome("noon", cc));
+        assertTrue(palindrome.isPalindrome("flake", cc));
+        assertFalse(palindrome.isPalindrome("racecar", cc));
+        assertFalse(palindrome.isPalindrome("noon", cc));
 
-        assertFalse(palindrome.isPalindrome("horse", cc));
-        assertFalse(palindrome.isPalindrome("rancor", cc));
-        assertFalse(palindrome.isPalindrome("aaaaab", cc));
+        assertTrue(palindrome.isPalindrome("afrrseb", cc));
 
-        assertFalse(palindrome.isPalindrome("racecar", null));
     }
 }
